@@ -1,17 +1,18 @@
 import React from 'react';
 import { Text, Button, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 
 import { Link } from 'expo-next-react-navigation'
 
 export default function App() {
+  const router = useRouter(); // Diff with Router?
   return (
       <NavigationContainer>
         <View>
           <Text>Welcome to Index (landing) Page</Text>
-          <Button onPress={() => Router.refresh()} title="Click me to refresh" />
-          <Button onPress={() => Router.push('./app')} title="To App Page" />
+          <Button onPress={() => Router.reload()} title="Click me to refresh" />
+          <Button onPress={() => Router.push('/app')} title="To App Page" />
           <Link routeName="app" params={{ initialRouteName: 'Other', key: 'blah'}} web={{ as: '.'}}>
             <Button
             style={{ userSelect:'none' }}
