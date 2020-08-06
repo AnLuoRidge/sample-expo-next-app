@@ -1,16 +1,17 @@
 import React from 'react';
 import { Text, Button, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import Router from 'next/router';
 
 import { Link } from 'expo-next-react-navigation'
 
 export default function App() {
-  const me: number = 1;
   return (
       <NavigationContainer>
         <View>
           <Text>Welcome to Index (landing) Page</Text>
-          <Button onPress={() => console.table(['one', 'two'])} title="Click me" />
+          <Button onPress={() => Router.refresh()} title="Click me to refresh" />
+          <Button onPress={() => Router.push('./app')} title="To App Page" />
           <Link routeName="app" params={{ initialRouteName: 'Other', key: 'blah'}} web={{ as: '.'}}>
             <Button
             style={{ userSelect:'none' }}
